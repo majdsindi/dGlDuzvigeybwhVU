@@ -34,10 +34,13 @@ My analysis began with Exploratory Data Analysis (EDA) to understand the distrib
 
 **•	X2**, **X3**, and **X4** had more mixed distributions, where influence on happiness is more nuanced and will not be easy to detect with how small the dataset is. This does not mean that these aspects are not important, more so they are more nuanced and do not directly correlate to customer happiness.
 
+
 To identify top-performing models, *LazyClassifier* was used, revealing that *NearestCentroid*, *AdaBoostClassifier*, *LinearSVC*, and *LogisticRegression* were among the highest-performing models with all features. 
 Due to the random nature of performing the test/train split of the data, I performed an iterative search to find the best seed where the models performed best. I tested 9000 seeds and ran *LazyPredict* for each one, noting the top performing models. *Nearest Centroid Classifier* coming out on top with an accuracy score of 92%.
 
+
 Subsequent attempts to improve performance using *VotingClassifier* and *StackingClassifier* did not yield significant gains, suggesting that ensemble methods, in this specific context, did not add substantial value over individual classifiers.
+
 
 Given the goal of identifying influential features, two primary feature selection methods were utilized:
 
@@ -45,13 +48,16 @@ Given the goal of identifying influential features, two primary feature selectio
 
 **•**	**Univariate Feature Selection using *SelectKBest* with *f_classif***: This statistical test-based approach also ranked **X1** and **X5** highest, further confirming their strong individual correlation with the target variable (**Y**).
 
+
 Finally, the selected top models (*NearestCentroid*, *AdaBoostClassifier*, *LinearSVC*, and *LogisticRegression*) were re-trained using only X1 and X5 to confirm their influence. The results were:
 
 **•**	*AdaBoostClassifier* improved its accuracy from approximately 0.833 (with all features) to 0.88 (with **X1** and **X5**). This is a strong indicator that for this model, **X1** and **X5** are indeed the most discriminative features, and other features might be less relevant.
 
 **•**	*NearestCentroid*, *LinearSVC*, and *LogisticRegression* experienced a decrease in accuracy when limited to X1 and X5 (from ~0.833-0.917 to 0.77-0.81). While still performing reasonably, this suggests that for these models, the other features (**X2, X3, X4, X6**) did contribute to their overall performance, but to a lesser extent than **X1** and **X5** since the performance drop was not significant.
 
+
 Overall, the consistent identification of **X1** and **X5** as highly influential features across multiple analysis techniques strongly supports their importance in determining customer happiness.
+
 
 # RECOMMENDATIONS
 
