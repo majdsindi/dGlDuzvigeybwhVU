@@ -36,18 +36,17 @@ The workflow follows an iterative Data Science process from Exploratory Data Ana
 * **Distribution & Bivariate Analysis:** Examined feature distributions and stacked bar charts across all rating levels (1–5) grouped by customer happiness ($Y$).
 * **Key Insights:**
   * `X1` (On-time delivery) and `X6` (App ease-of-use) show high baseline ratings (means $> 4.2$), indicating strong overall delivery efficiency and user interface satisfaction.
-  * `X2` (Expected contents) exhibits significantly lower customer scores (mean $= 2.53$), highlighting a potential operational vulnerability in order accuracy or expectations management.
+  * `X2` (Expected contents) exhibits significantly lower customer scores (mean $= 2.53$) although it might not affect customer happiness, highlighting a potential operational vulnerability in order accuracy or expectations management.
   * `X5` (Courier satisfaction) and `X1` (On-time delivery) demonstrate strong visual separation between happy ($Y=1$) and unhappy ($Y=0$) customer cohorts.
 
 ### B. Feature Selection & Engineering Strategies
 To discover the minimal subset of features without sacrificing model predictive power:
 1. **Full Feature Baseline:** Modeling with all six features ($X_1$–$X_6$).
-2. **Feature Importance Ranking:** Utilizing Tree-based feature importances (Random Forest, Extra Trees, Gradient Boosting).
-3. **Subset Optimization:** Evaluating reduced feature combinations ($k=2, 3, 4$) to balance model simplicity and high performance.
-4. **Key Feature Drivers:** Identifying `X1` (On-time delivery) and `X5` (Courier satisfaction) as primary drivers of customer happiness.
+2. **Subset Optimization:** Evaluating reduced feature combinations ($k=2, 3, 4$) to balance model simplicity and high performance.
+3. **Key Feature Drivers:** Identifying `X1` (On-time delivery) and `X5` (Courier satisfaction) as primary drivers of customer happiness.
 
 ### C. Model Training & Cross-Validation
-* Evaluated diverse classifier architectures: **Logistic Regression, Decision Trees, Random Forest, Gradient Boosting, XGBoost, Support Vector Machines (SVM), and k-Nearest Neighbors (k-NN)**.
+* Evaluated diverse classifier architectures: **Nearest Centroid, AdaBoost, LinearSVC, Logistic Regression, and BernoulliNB**.
 * Applied **Stratified K-Fold Cross-Validation** to preserve target class balance across folds on small sample sizes.
 * Executed Hyperparameter Tuning to reduce overfitting and maximize validation accuracy.
 
@@ -60,7 +59,7 @@ To discover the minimal subset of features without sacrificing model predictive 
    * *Mitigation:* Employed Cross-Validation, constrained model hyperparameters (e.g., max depth, minimum samples per leaf), and prioritized lower-variance models.
 
 2. **Categorical / Ordinal Rating Granularity:**
-   * *Impact:* Features are discrete Likert scores (1 to 5). Standard continuous metrics and linear boundaries can struggle to capture non-linear jumps between ratings.
+   * *Impact:* Features are discrete scores (1 to 5). Standard continuous metrics and linear boundaries can struggle to capture non-linear jumps between ratings.
    * *Mitigation:* Tested both tree-based models capable of handling non-linear decision thresholds and distance-based estimators with appropriate feature scaling.
 
 3. **Feature Redundancy vs. Minimization Goal:**
