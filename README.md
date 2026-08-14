@@ -5,15 +5,15 @@
 [![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-Machine%20Learning-F7931E.svg)](https://scikit-learn.org/)
 [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/majdsindi/dGlDuzvigeybwhVU/blob/main/happiness_predict.ipynb)
 
-An end-to-end data science and machine learning project built to predict customer satisfaction/happiness ($Y$) based on survey feedback ($X_1$ to $X_6$) from ACME's delivery service, identifying the most critical survey questions to optimize customer experience while minimizing survey fatigue.
+An end-to-end data science and machine learning project built to predict customer satisfaction/happiness ($Y$) based on survey feedback ($X_1$ to $X_6$) from a startup logistics company's delivery service, identifying the most critical survey questions to optimize customer experience while minimizing survey fatigue.
 
 ---
 
 ## 📌 1. Summary of the Project
 
-ACME Inc. collects feedback from customers regarding their delivery experience through a 6-question survey evaluated on a 5-point Likert scale (1 = Unsatisfied, 5 = Highly Satisfied). The primary objective of this project is twofold:
+The company collects feedback from customers regarding their delivery experience through a 6-question survey evaluated on a 5-point Likert scale (1 = Unsatisfied, 5 = Highly Satisfied). The primary objective of this project is twofold:
 1. **Predictive Modeling:** Build a binary classification model that accurately predicts customer happiness ($Y = 1$ for Happy, $Y = 0$ for Unhappy) with a target accuracy threshold of **> 73%**.
-2. **Feature Optimization & Survey Streamlining:** Identify the minimal, most impactful set of survey questions needed to predict satisfaction, allowing ACME to shorten the survey, improve response rates, and focus operational improvements on key customer value drivers.
+2. **Feature Optimization & Survey Streamlining:** Identify the minimal, most impactful set of survey questions needed to predict satisfaction, allowing the company to shorten the survey, improve response rates, and focus operational improvements on key customer value drivers.
 
 ### Dataset Overview
 * **Total Survey Responses:** 126 customer records
@@ -83,10 +83,10 @@ To discover the minimal subset of features without sacrificing model predictive 
    * Reduce the 6-question survey to a focused **2 to 3 question survey**, centering on **`X1` (Delivery On-Time)** and **`X5` (Courier Satisfaction)**. Shortening the survey increases completion rates and provides cleaner signal on core happiness metrics.
 
 2. **Prioritize Order Accuracy & Content Quality (`X2`):**
-   * `X2` (*Contents of order as expected*) received the lowest mean score ($2.53/5.00$). ACME should audit order fulfillment, packaging, and item descriptions to address customer expectation gaps.
+   * `X2` (*Contents of order as expected*) received the lowest mean score ($2.53/5.00$). The company should audit order fulfillment, packaging, and item descriptions to address customer expectation gaps.
 
 3. **Focus Operational Incentives on Delivery Execution (`X1` & `X5`):**
-   * Since courier satisfaction and delivery speed are top predictors of customer happiness, ACME should invest in courier driver training, real-time tracking improvements, and performance-based driver incentives.
+   * Since courier satisfaction and delivery speed are top predictors of customer happiness, the company should invest in courier driver training, real-time tracking improvements, and performance-based driver incentives.
 
 4. **Future Data Collection & Enhancement:**
    * Expand data collection beyond $N=126$ responses to support robust model retraining.
